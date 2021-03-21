@@ -34,3 +34,14 @@ stages:
     - src/features/group_and_compute_distances.py
     outs:
     - data/interim/grouped_by_user_with_distances.csv
+  split_data:
+    cmd: python3 src/features/split_data.py
+    deps:
+    - data/interim/grouped_by_user_with_distances.csv
+    - src/features/split_data.py
+    params:
+    - split.random_state
+    - split.test_size
+    outs:
+    - data/processed/test.csv
+    - data/processed/train.csv

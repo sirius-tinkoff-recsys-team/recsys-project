@@ -4,3 +4,7 @@ filter:
 
 geoposition:
   round_precision: 2
+
+split:
+  test_size: 0.3
+  random_state: 0
