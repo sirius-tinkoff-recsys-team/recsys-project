@@ -9,3 +9,12 @@ stages:
     - filter.required_unique_visitors
     outs:
     - data/interim/filtered_by_frequency.csv
+  categorize_geoposition:
+    cmd: python3 src/features/categorize_geoposition.py
+    deps:
+    - data/interim/filtered_by_frequency.csv
+    - src/features/categorize_geoposition.py
+    params:
+    - geoposition.round_precision
+    outs:
+    - data/interim/categorical_geoposition.csv

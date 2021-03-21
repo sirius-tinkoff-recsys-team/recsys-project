@@ -17,3 +17,19 @@ stages:
     - path: data/interim/filtered_by_frequency.csv
       md5: c7bbe733d1dc4f7a750a284a9f05fedb
       size: 67453599
+  categorize_geoposition:
+    cmd: python3 src/features/categorize_geoposition.py
+    deps:
+    - path: data/interim/filtered_by_frequency.csv
+      md5: c7bbe733d1dc4f7a750a284a9f05fedb
+      size: 67453599
+    - path: src/features/categorize_geoposition.py
+      md5: c497bb7ceb8fbdcd6f5b0acf04c99b87
+      size: 688
+    params:
+      params.yaml:
+        geoposition.round_precision: 2
+    outs:
+    - path: data/interim/categorical_geoposition.csv
+      md5: 6cbc33c5c64e88435e2ea535f9acb077
+      size: 14516628
