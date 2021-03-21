@@ -18,3 +18,12 @@ stages:
     - geoposition.round_precision
     outs:
     - data/interim/categorical_geoposition.csv
+  label_encode:
+    cmd: python3 src/features/label_encode.py
+    deps:
+    - data/interim/categorical_geoposition.csv
+    - data/interim/filtered_by_frequency.csv
+    - src/features/label_encode.py
+    outs:
+    - artifacts/label_encoders.pkl
+    - data/interim/label_encoded.csv
