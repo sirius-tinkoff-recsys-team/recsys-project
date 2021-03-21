@@ -17,6 +17,12 @@ def filter_by_frequency(df):
     satisfying_locations = location_to_unique_visitors_count[
         location_to_unique_visitors_count.userId > params.filter.required_unique_visitors
     ].loc_id
+    df = df.loc[df.loc_id.isin(satisfying_locations)]
+
+    deduplicated = df.drop_duplicates(
+        subset=["userId", "loc_id"], 
+        keep="first"
+    )
     visitor_to_unique_places_count = (
         deduplicated
         .groupby("userId")
@@ -26,10 +32,7 @@ def filter_by_frequency(df):
     satisfying_visitors = visitor_to_unique_places_count[
         visitor_to_unique_places_count.loc_id > params.filter.required_unique_places
     ].userId
-    result = df.loc[
-        df.loc_id.isin(satisfying_locations) & 
-        df.userId.isin(satisfying_visitors)
-    ]
+    result = df.loc[df.userId.isin(satisfying_visitors)]
     return result
 
 if __name__ == "__main__":

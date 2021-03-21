@@ -7,22 +7,22 @@ stages:
       md5: afeb1b5472c391929b6de33724e9ac98
       size: 382119602
     - path: src/data/filter_by_frequency.py
-      md5: 9a25bbca052c3cbf41b328b63600fee6
-      size: 1320
+      md5: 7a9f241398e9496c0b752639ac9130b0
+      size: 1417
     params:
       params.yaml:
         filter.required_unique_places: 5
         filter.required_unique_visitors: 10
     outs:
     - path: data/interim/filtered_by_frequency.csv
-      md5: 846dd8e38493ace43743e92f00724a9b
-      size: 61767895
+      md5: c6a5c284c3c653ecced5bfdfe81d6112
+      size: 43631685
   categorize_geoposition:
     cmd: python3 src/features/categorize_geoposition.py
     deps:
     - path: data/interim/filtered_by_frequency.csv
-      md5: 846dd8e38493ace43743e92f00724a9b
-      size: 61767895
+      md5: c6a5c284c3c653ecced5bfdfe81d6112
+      size: 43631685
     - path: src/features/categorize_geoposition.py
       md5: fd4adb0d7bd5f6e97e10df656ae7f0a4
       size: 701
@@ -31,37 +31,37 @@ stages:
         geoposition.round_precision: 2
     outs:
     - path: data/interim/categorical_geoposition.csv
-      md5: 61bc80589beb3a90a77ecc19c12af9c8
-      size: 9430818
+      md5: 62f5fa21d210e4d1034481cda961080d
+      size: 6726855
   label_encode:
     cmd: python3 src/features/label_encode.py
     deps:
     - path: data/interim/categorical_geoposition.csv
-      md5: 61bc80589beb3a90a77ecc19c12af9c8
-      size: 9430818
+      md5: 62f5fa21d210e4d1034481cda961080d
+      size: 6726855
     - path: data/interim/filtered_by_frequency.csv
-      md5: 846dd8e38493ace43743e92f00724a9b
-      size: 61767895
+      md5: c6a5c284c3c653ecced5bfdfe81d6112
+      size: 43631685
     - path: src/features/label_encode.py
       md5: 97ae5013e265d2349cedd5b3ac34c2f9
       size: 1070
     outs:
     - path: artifacts/label_encoders.pkl
-      md5: bb1dd5690623a9f791ac9f65d05668bb
-      size: 345384
+      md5: 2399a05428ef3f8b48e60dbda6a16770
+      size: 248030
     - path: data/interim/label_encoded.csv
-      md5: f05fde49eb63aed97e1dbbd72622f603
-      size: 41977647
+      md5: f753f71984857fbd346a8e6cc3853211
+      size: 29567100
   group_and_compute_distances:
     cmd: python3 src/features/group_and_compute_distances.py
     deps:
     - path: data/interim/label_encoded.csv
-      md5: f05fde49eb63aed97e1dbbd72622f603
-      size: 41977647
+      md5: f753f71984857fbd346a8e6cc3853211
+      size: 29567100
     - path: src/features/group_and_compute_distances.py
       md5: 344c9cb8d367fc283e46e3fedead845f
       size: 969
     outs:
     - path: data/interim/grouped_by_user_with_distances.csv
-      md5: f08cd5d9314aaa1fa05baabb1003baa9
-      size: 58419825
+      md5: fbb09b46ad182005edc49c4009c4004d
+      size: 41430454
