@@ -1,0 +1,3 @@
+filter:
+  required_unique_visitors: 10
+  required_unique_places: 5

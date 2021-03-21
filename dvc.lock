@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  filter_by_frequency:
+    cmd: python3 src/data/filter_by_frequency.py
+    deps:
+    - path: data/raw/loc-brightkite_totalCheckins.txt
+      md5: afeb1b5472c391929b6de33724e9ac98
+      size: 382119602
+    - path: src/data/filter_by_frequency.py
+      md5: e08b95c87fa844e1e40b83cb528722b4
+      size: 1307
+    params:
+      params.yaml:
+        filter.required_unique_places: 5
+        filter.required_unique_visitors: 10
+    outs:
+    - path: data/interim/filtered_by_frequency.csv
+      md5: c7bbe733d1dc4f7a750a284a9f05fedb
+      size: 67453599

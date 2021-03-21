@@ -1,0 +1,11 @@
+stages:
+  filter_by_frequency:
+    cmd: python3 src/data/filter_by_frequency.py
+    deps:
+    - data/raw/loc-brightkite_totalCheckins.txt
+    - src/data/filter_by_frequency.py
+    params:
+    - filter.required_unique_places
+    - filter.required_unique_visitors
+    outs:
+    - data/interim/filtered_by_frequency.csv
