@@ -27,3 +27,10 @@ stages:
     outs:
     - artifacts/label_encoders.pkl
     - data/interim/label_encoded.csv
+  group_and_compute_distances:
+    cmd: python3 src/features/group_and_compute_distances.py
+    deps:
+    - data/interim/label_encoded.csv
+    - src/features/group_and_compute_distances.py
+    outs:
+    - data/interim/grouped_by_user_with_distances.csv

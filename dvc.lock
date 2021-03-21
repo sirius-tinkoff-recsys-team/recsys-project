@@ -52,3 +52,16 @@ stages:
     - path: data/interim/label_encoded.csv
       md5: f05fde49eb63aed97e1dbbd72622f603
       size: 41977647
+  group_and_compute_distances:
+    cmd: python3 src/features/group_and_compute_distances.py
+    deps:
+    - path: data/interim/label_encoded.csv
+      md5: f05fde49eb63aed97e1dbbd72622f603
+      size: 41977647
+    - path: src/features/group_and_compute_distances.py
+      md5: 344c9cb8d367fc283e46e3fedead845f
+      size: 969
+    outs:
+    - path: data/interim/grouped_by_user_with_distances.csv
+      md5: f08cd5d9314aaa1fa05baabb1003baa9
+      size: 58419825

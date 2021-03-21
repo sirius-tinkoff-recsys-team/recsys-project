@@ -1,2 +1,4 @@
 box
 rich
+pandarallel
+haversine
