@@ -7,7 +7,7 @@ from src.context import ctx
 from src.config import params
 
 def label_encode(df, encoders=None):
-    result = df[[]].copy()
+    result = df.copy()
     encoders = encoders or dict()
     for col in ["userId", "loc_id", "geo_place"]:
         if col in encoders:
