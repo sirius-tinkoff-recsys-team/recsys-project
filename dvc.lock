@@ -7,29 +7,29 @@ stages:
       md5: afeb1b5472c391929b6de33724e9ac98
       size: 382119602
     - path: src/data/filter_by_frequency.py
-      md5: e08b95c87fa844e1e40b83cb528722b4
-      size: 1307
+      md5: 9a25bbca052c3cbf41b328b63600fee6
+      size: 1320
     params:
       params.yaml:
         filter.required_unique_places: 5
         filter.required_unique_visitors: 10
     outs:
     - path: data/interim/filtered_by_frequency.csv
-      md5: c7bbe733d1dc4f7a750a284a9f05fedb
-      size: 67453599
+      md5: 846dd8e38493ace43743e92f00724a9b
+      size: 61767895
   categorize_geoposition:
     cmd: python3 src/features/categorize_geoposition.py
     deps:
     - path: data/interim/filtered_by_frequency.csv
-      md5: c7bbe733d1dc4f7a750a284a9f05fedb
-      size: 67453599
+      md5: 846dd8e38493ace43743e92f00724a9b
+      size: 61767895
     - path: src/features/categorize_geoposition.py
-      md5: c497bb7ceb8fbdcd6f5b0acf04c99b87
-      size: 688
+      md5: fd4adb0d7bd5f6e97e10df656ae7f0a4
+      size: 701
     params:
       params.yaml:
         geoposition.round_precision: 2
     outs:
     - path: data/interim/categorical_geoposition.csv
-      md5: 6cbc33c5c64e88435e2ea535f9acb077
-      size: 14516628
+      md5: 61bc80589beb3a90a77ecc19c12af9c8
+      size: 9430818

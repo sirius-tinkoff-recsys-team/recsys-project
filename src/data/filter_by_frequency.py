@@ -40,4 +40,4 @@ if __name__ == "__main__":
         names=["userId","timestamp","long","lat","loc_id"],
     )
     result = filter_by_frequency(df)
-    result.to_csv(ctx.data_dir / "interim" / "filtered_by_frequency.csv")
+    result.to_csv(ctx.data_dir / "interim" / "filtered_by_frequency.csv", index=False)

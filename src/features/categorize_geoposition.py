@@ -14,4 +14,4 @@ def categorize_geoposition(df):
 if __name__ == "__main__":
     df_filtered = pd.read_csv(ctx.data_dir / "interim" / "filtered_by_frequency.csv")
     result = categorize_geoposition(df_filtered)
-    result.to_csv(ctx.data_dir / "interim" / "categorical_geoposition.csv")
+    result.to_csv(ctx.data_dir / "interim" / "categorical_geoposition.csv", index=False)
