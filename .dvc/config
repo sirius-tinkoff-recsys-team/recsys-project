@@ -1,2 +1,6 @@
 [core]
     autostage = true
+    remote = yandexcloud
+['remote "yandexcloud"']
+    url = s3://sirius-tinkoff-artifact-registry/recsys-project
+    endpointurl = https://storage.yandexcloud.net
