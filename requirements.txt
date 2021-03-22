@@ -1,5 +1,5 @@
 attrs
-box
+python-box
 rich
 pandarallel
 haversine
