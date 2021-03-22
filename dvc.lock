@@ -85,3 +85,44 @@ stages:
     - path: data/processed/train.csv
       md5: 22866b5f3a0ac569fc9c077928d3f3b2
       size: 28121239
+  train_lstm:
+    cmd: python3 src/models/lstm/train.py
+    deps:
+    - path: artifacts/label_encoders.pkl
+      md5: b2faaa45f50ed611e0f56df5de8f70bb
+      size: 248030
+    - path: data/processed/train.csv
+      md5: 22866b5f3a0ac569fc9c077928d3f3b2
+      size: 28121239
+    - path: src/models/lstm/data.py
+      md5: 79adf097e34c837bcdb9fe67bca08ede
+      size: 3194
+    - path: src/models/lstm/model.py
+      md5: f71586b27b1c324def7788b768181a29
+      size: 4251
+    - path: src/models/lstm/train.py
+      md5: b1a46f324a88f43c3362fd0eb07dae3e
+      size: 955
+    params:
+      params.yaml:
+        lstm:
+          data:
+            max_sequence_length: 100
+            batch_size_train: 4
+            batch_size_valid: 32
+          model:
+            embedding_dim: 64
+            hidden_dim: 64
+            num_layers: 1
+            dropout: 0.0
+          optimizer:
+            learning_rate: 0.001
+            epochs: 1
+    outs:
+    - path: artifacts/lstm.ckpt
+      md5: 074d501320542b22fdd09687f1a32880
+      size: 2643205
+    - path: logs
+      md5: 425cf56ecd879793b318192517113db4.dir
+      size: 424
+      nfiles: 5
