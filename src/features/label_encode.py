@@ -12,10 +12,10 @@ def label_encode(df, encoders=None):
     for col in ["userId", "loc_id", "geo_place"]:
         if col in encoders:
             encoder = encoders[col]
-            result[col] = encoder.transform(df[col])
+            result[col] = encoder.transform(df[col]) + 1
         else:
             encoder = LabelEncoder()
-            result[col] = encoder.fit_transform(df[col])
+            result[col] = encoder.fit_transform(df[col]) + 1
             encoders[col] = encoder
     return result, encoders
 

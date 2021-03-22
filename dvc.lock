@@ -43,34 +43,34 @@ stages:
       md5: c6a5c284c3c653ecced5bfdfe81d6112
       size: 43631685
     - path: src/features/label_encode.py
-      md5: 97ae5013e265d2349cedd5b3ac34c2f9
-      size: 1070
+      md5: 03f5ad5b2987e8ba2604b80f23c6fdae
+      size: 1078
     outs:
     - path: artifacts/label_encoders.pkl
-      md5: 2399a05428ef3f8b48e60dbda6a16770
+      md5: b2faaa45f50ed611e0f56df5de8f70bb
       size: 248030
     - path: data/interim/label_encoded.csv
-      md5: f753f71984857fbd346a8e6cc3853211
-      size: 29567100
+      md5: f1f6d37a2e9f14ded474f30d29806203
+      size: 29567611
   group_and_compute_distances:
     cmd: python3 src/features/group_and_compute_distances.py
     deps:
     - path: data/interim/label_encoded.csv
-      md5: f753f71984857fbd346a8e6cc3853211
-      size: 29567100
+      md5: f1f6d37a2e9f14ded474f30d29806203
+      size: 29567611
     - path: src/features/group_and_compute_distances.py
       md5: 344c9cb8d367fc283e46e3fedead845f
       size: 969
     outs:
     - path: data/interim/grouped_by_user_with_distances.csv
-      md5: fbb09b46ad182005edc49c4009c4004d
-      size: 41430454
+      md5: 305ed01957def186badb5d69fddae855
+      size: 41431311
   split_data:
     cmd: python3 src/features/split_data.py
     deps:
     - path: data/interim/grouped_by_user_with_distances.csv
-      md5: fbb09b46ad182005edc49c4009c4004d
-      size: 41430454
+      md5: 305ed01957def186badb5d69fddae855
+      size: 41431311
     - path: src/features/split_data.py
       md5: f5c662226fe5790555a6a3d1567f7dad
       size: 763
@@ -80,8 +80,8 @@ stages:
         split.test_size: 0.3
     outs:
     - path: data/processed/test.csv
-      md5: 3bdb2e25c874e452674a3a3edf02b071
-      size: 12093689
+      md5: bb50f45f27a1d29d0f98ece808e4d6fc
+      size: 12093925
     - path: data/processed/train.csv
-      md5: 8e96047e7e0ab7a3e752b2ed4e15e912
-      size: 28120618
+      md5: 22866b5f3a0ac569fc9c077928d3f3b2
+      size: 28121239
