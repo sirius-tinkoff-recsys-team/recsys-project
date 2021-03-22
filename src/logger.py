@@ -51,7 +51,7 @@ class Logger:
                 project_qualified_name=self.project_name,
             )
 
-        self.tags = list(set(get_current_branch()) | set(self.tags))
+        self.tags = list({get_current_branch()} | set(self.tags))
 
         self.experiment = neptune.create_experiment(
             tags=self.tags,
