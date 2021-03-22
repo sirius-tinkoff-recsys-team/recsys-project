@@ -3,3 +3,10 @@ box
 rich
 pandarallel
 haversine
+torch
+pytorch_lightning
+pandas
+numpy
+scikit-learn
+dvclive
+neptune-client
