@@ -6,6 +6,7 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 from src.models.lstm.data import BrightkiteDataModule
 from src.models.lstm.model import LSTMModel
 from src.logger import init_logger
+from src.config import params
 
 def train():
     init_logger(tags=["debug"])
@@ -24,6 +25,7 @@ def train():
         checkpoint_callback=checkpoint_callback,
         deterministic=True,
         logger=False,
+        max_epochs=params.lstm.optimizer.epochs,
     )
 
     trainer.fit(model, dm)
