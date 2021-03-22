@@ -38,7 +38,7 @@ class Logger:
         self.experiment.log_artifact(artifact, destination)
 
     def create_experiment(self):
-        dvclive.init()
+        # dvclive.init()
 
         if self.dry_run:
             neptune.init(
