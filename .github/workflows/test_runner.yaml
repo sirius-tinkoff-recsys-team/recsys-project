@@ -19,7 +19,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           NEPTUNE_API_TOKEN:  ${{ secrets.NEPTUNE_API_TOKEN }}
         run: |
-          dvc pull data --run-cache
+          dvc pull --run-cache
           dvc repro
 
           echo "## Metrics" >> report.md
