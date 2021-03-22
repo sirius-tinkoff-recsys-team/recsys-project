@@ -1,4 +1,9 @@
 neptune:
   api_token: !env NEPTUNE_API_TOKEN
   project_name: "konodyuk/sirius-tinkoff-recsys-project"
-  tags: ["debug"]
+
+resources:
+  dl_train:
+    num_workers: 4
+  dl_valid:
+    num_workers: 4

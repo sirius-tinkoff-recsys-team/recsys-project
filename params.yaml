@@ -8,3 +8,16 @@ geoposition:
 split:
   test_size: 0.3
   random_state: 0
+
+lstm:
+  data:
+    max_sequence_length: 100
+    batch_size_train: 4
+    batch_size_valid: 32
+  model:
+    embedding_dim: 64
+    hidden_dim: 64
+    num_layers: 1
+    dropout: 0.
+  optimizer:
+    learning_rate: 1e-3
