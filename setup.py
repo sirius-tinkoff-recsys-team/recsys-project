@@ -8,5 +8,5 @@ with open(requirements_file) as f:
 setuptools.setup(
     name="src",
     packages=setuptools.find_packages(),
-    install_requires=install_requires,
+    # install_requires=install_requires,
 )

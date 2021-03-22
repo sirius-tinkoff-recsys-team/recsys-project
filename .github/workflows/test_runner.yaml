@@ -17,6 +17,7 @@ jobs:
             ${{ runner.os }}-pip-
       - name: install
         run: |
+          python3 -m pip install -r requirements.txt
           python3 -m pip install -e .
       - name: run cml
         env:
