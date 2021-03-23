@@ -57,6 +57,7 @@ stages:
     - lstm
     outs:
     - artifacts/lstm.ckpt
+        checkpoint: true
     live:
       logs:
         summary: true
