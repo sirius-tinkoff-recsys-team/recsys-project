@@ -113,16 +113,16 @@ stages:
           model:
             embedding_dim: 64
             hidden_dim: 64
-            num_layers: 2
+            num_layers: 1
             dropout: 0.0
           optimizer:
             learning_rate: 0.001
-            epochs: 10
+            epochs: 100
     outs:
     - path: artifacts/lstm.ckpt
-      md5: ca4112f1d70bd3edf684c0c92d762d24
-      size: 3044816
+      md5: 60cb254ee86254996f642fb2f59cc9fe
+      size: 2642659
     - path: logs
-      md5: b8393502fddb10e7f310d02d53437c0f.dir
-      size: 2089
+      md5: 5e07d6052aff627503f23f0e4e2b662b.dir
+      size: 18990
       nfiles: 5
