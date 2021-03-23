@@ -76,8 +76,8 @@ class LSTMModel(pl.LightningModule):
         last_item_predictions = torch.softmax(logits[:, -1], dim=1)
         accuracies = {
             f"valid_acc@{k}": top_k_accuracy_score(
-                last_items, 
-                last_item_predictions, 
+                last_items.detach().cpu().numpy(), 
+                last_item_predictions.detach().cpu().numpy(), 
                 k=k, 
                 labels=np.arange(self.num_items)
             )
