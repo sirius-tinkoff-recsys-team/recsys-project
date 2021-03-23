@@ -38,7 +38,7 @@ class LSTMModel(pl.LightningModule):
         sequence = batch["sequence"]
         sequence_lengths = batch["sequence_lengths"]
         sequence = self.item_embedding(sequence)
-        packed_sequence = pack_padded_sequence(sequence, sequence_lengths, batch_first=True, enforce_sorted=False)
+        packed_sequence = pack_padded_sequence(sequence, sequence_lengths.cpu(), batch_first=True, enforce_sorted=False)
         hidden_states, last_hidden_state = self.model(packed_sequence)
         padded_sequence, _ = pad_packed_sequence(hidden_states, batch_first=True)
         logits = self.linear(padded_sequence)
