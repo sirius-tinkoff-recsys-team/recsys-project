@@ -17,8 +17,8 @@ jobs:
             ${{ runner.os }}-pip-cache-
       - name: install
         run: |
-          python3 -m pip install -r requirements.txt
-          python3 -m pip install -e .
+          # python3 -m pip install -r requirements.txt
+          python3 -m pip install --no-deps -e .
       - name: run cml
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
