@@ -1,3 +1,5 @@
+from typing import Dict, Any, Optional
+
 from pytorch_lightning.callbacks import ModelCheckpoint
 
 class DVCLiveCompatibleModelCheckpoint(ModelCheckpoint):
