@@ -1,6 +1,7 @@
 from typing import Dict, Any, Optional
 
-from pytorch_lightning.callbacks import ModelCheckpoint
+import dvclive
+from pytorch_lightning.callbacks import ModelCheckpoint, Callback
 
 class DVCLiveCompatibleModelCheckpoint(ModelCheckpoint):
    def _get_metric_interpolated_filepath_name(
@@ -13,3 +14,7 @@ class DVCLiveCompatibleModelCheckpoint(ModelCheckpoint):
     ) -> str:
         filepath = self.format_checkpoint_name(epoch, step, monitor_candidates)
         return filepath
+
+class DVCLiveNextStepCallback(Callback):
+    def on_epoch_end(self, trainer, pl_module):
+        dvclive.next_step()
