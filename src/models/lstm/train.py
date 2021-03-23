@@ -1,12 +1,12 @@
 import pickle
 
 import pytorch_lightning as pl
-from pytorch_lightning.callbacks import ModelCheckpoint
 
 from src.models.lstm.data import BrightkiteDataModule
 from src.models.lstm.model import LSTMModel
 from src.logger import init_logger
 from src.config import params
+from src.utils.lightning import DVCLiveCompatibleModelCheckpoint
 
 def train():
     init_logger(tags=["debug"])
