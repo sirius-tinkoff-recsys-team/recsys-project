@@ -12,12 +12,12 @@ split:
 lstm:
   data:
     max_sequence_length: 100
-    batch_size_train: 4
-    batch_size_valid: 32
+    batch_size_train: 16
+    batch_size_valid: 64
   model:
     embedding_dim: 64
     hidden_dim: 64
-    num_layers: 1
+    num_layers: 2
     dropout: 0.
   optimizer:
     learning_rate: 1e-3
