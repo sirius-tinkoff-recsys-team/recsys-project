@@ -6,7 +6,7 @@ on:
 
 jobs:
   run:
-    runs-on: [self-hosted,cml,gpu,debug]
+    runs-on: [self-hosted,cml,gpu]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
