@@ -8,6 +8,7 @@ geoposition:
 split:
   test_size: 0.3
   random_state: 0
+  time_based_train_size: 0.8
 
 lstm:
   data:

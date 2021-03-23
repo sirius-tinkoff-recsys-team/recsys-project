@@ -126,3 +126,22 @@ stages:
       md5: b8393502fddb10e7f310d02d53437c0f.dir
       size: 2089
       nfiles: 5
+  split_data_by_time:
+    cmd: python3 src/features/split_data_by_time.py
+    deps:
+    - path: data/interim/grouped_by_user_with_distances.csv
+      md5: 305ed01957def186badb5d69fddae855
+      size: 41431311
+    - path: src/features/split_data_by_time.py
+      md5: b6f16b96a5c88469f75fd05d4e60c926
+      size: 771
+    params:
+      params.yaml:
+        split.time_based_train_size: 0.8
+    outs:
+    - path: data/interim/time_based_split_test.csv
+      md5: 44eff84b85260edf111b100649025560
+      size: 7651288
+    - path: data/interim/time_based_split_train.csv
+      md5: b8fb70c9392c90e580f8a550b0d2ca91
+      size: 32563876

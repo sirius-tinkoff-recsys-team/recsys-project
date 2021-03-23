@@ -62,3 +62,13 @@ stages:
       logs:
         summary: true
         html: true
+  split_data_by_time:
+    cmd: python3 src/features/split_data_by_time.py
+    deps:
+    - data/interim/grouped_by_user_with_distances.csv
+    - src/features/split_data_by_time.py
+    params:
+    - split.time_based_train_size
+    outs:
+    - data/interim/time_based_split_test.csv
+    - data/interim/time_based_split_train.csv

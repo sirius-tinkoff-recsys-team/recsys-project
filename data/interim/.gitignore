@@ -2,3 +2,5 @@
 /categorical_geoposition.csv
 /label_encoded.csv
 /grouped_by_user_with_distances.csv
+/time_based_split_train.csv
+/time_based_split_test.csv
