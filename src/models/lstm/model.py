@@ -38,7 +38,7 @@ class LSTMModel(pl.LightningModule):
         sequence = batch["sequence"]
         sequence_lengths = batch["sequence_lengths"]
         sequence = self.item_embedding(sequence)
-        packed_sequence = pack_padded_sequence(sequence, sequence_lengths, batch_first=True, enforce_sorted=False)
+        packed_sequence = pack_padded_sequence(sequence, sequence_lengths.cpu(), batch_first=True, enforce_sorted=False)
         hidden_states, last_hidden_state = self.model(packed_sequence)
         padded_sequence, _ = pad_packed_sequence(hidden_states, batch_first=True)
         logits = self.linear(padded_sequence)
@@ -76,8 +76,8 @@ class LSTMModel(pl.LightningModule):
         last_item_predictions = torch.softmax(logits[:, -1], dim=1)
         accuracies = {
             f"valid_acc@{k}": top_k_accuracy_score(
-                last_items, 
-                last_item_predictions, 
+                last_items.detach().cpu().numpy(), 
+                last_item_predictions.detach().cpu().numpy(), 
                 k=k, 
                 labels=np.arange(self.num_items)
             )
