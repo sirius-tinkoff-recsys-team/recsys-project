@@ -15,7 +15,7 @@ def train():
     model = LSTMModel(num_items)
     dm = BrightkiteDataModule()
 
-    checkpoint_callback = ModelCheckpoint(
+    checkpoint_callback = DVCLiveCompatibleModelCheckpoint(
         dirpath="artifacts",
         filename="lstm",
         save_top_k=-1,
