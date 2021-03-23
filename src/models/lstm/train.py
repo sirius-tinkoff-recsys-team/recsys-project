@@ -19,6 +19,7 @@ def train():
         dirpath="artifacts",
         filename="lstm",
         save_top_k=-1,
+        verbose=True,
     )
 
     dvclive_next_step_callback = DVCLiveNextStepCallback()
