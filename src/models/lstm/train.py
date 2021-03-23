@@ -26,6 +26,7 @@ def train():
         deterministic=True,
         logger=False,
         max_epochs=params.lstm.optimizer.epochs,
+        gpus=-1,
     )
 
     trainer.fit(model, dm)
