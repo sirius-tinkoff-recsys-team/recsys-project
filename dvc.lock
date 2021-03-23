@@ -47,30 +47,30 @@ stages:
       size: 1078
     outs:
     - path: artifacts/label_encoders.pkl
-      md5: b2faaa45f50ed611e0f56df5de8f70bb
-      size: 248030
+      md5: bc55ffe0e9a7cef1633db30e705119d9
+      size: 248034
     - path: data/interim/label_encoded.csv
-      md5: f1f6d37a2e9f14ded474f30d29806203
-      size: 29567611
+      md5: 607d9e8eee2c8c400f1682f2fbeb0210
+      size: 29603713
   group_and_compute_distances:
     cmd: python3 src/features/group_and_compute_distances.py
     deps:
     - path: data/interim/label_encoded.csv
-      md5: f1f6d37a2e9f14ded474f30d29806203
-      size: 29567611
+      md5: 607d9e8eee2c8c400f1682f2fbeb0210
+      size: 29603713
     - path: src/features/group_and_compute_distances.py
       md5: 344c9cb8d367fc283e46e3fedead845f
       size: 969
     outs:
     - path: data/interim/grouped_by_user_with_distances.csv
-      md5: 305ed01957def186badb5d69fddae855
-      size: 41431311
+      md5: 7890f5016a6ab06e621413fa80e963a7
+      size: 40252964
   split_data:
     cmd: python3 src/features/split_data.py
     deps:
     - path: data/interim/grouped_by_user_with_distances.csv
-      md5: 305ed01957def186badb5d69fddae855
-      size: 41431311
+      md5: 7890f5016a6ab06e621413fa80e963a7
+      size: 40252964
     - path: src/features/split_data.py
       md5: f5c662226fe5790555a6a3d1567f7dad
       size: 763
@@ -80,49 +80,49 @@ stages:
         split.test_size: 0.3
     outs:
     - path: data/processed/test.csv
-      md5: bb50f45f27a1d29d0f98ece808e4d6fc
-      size: 12093925
+      md5: 9c638af5f73eb061eedd9af18e8d4638
+      size: 12106759
     - path: data/processed/train.csv
-      md5: 22866b5f3a0ac569fc9c077928d3f3b2
-      size: 28121239
+      md5: e12dfcdd06eab37aa99e146aa1b0b3f2
+      size: 28124770
   train_lstm:
     cmd: python3 src/models/lstm/train.py
     deps:
     - path: artifacts/label_encoders.pkl
-      md5: b2faaa45f50ed611e0f56df5de8f70bb
-      size: 248030
+      md5: bc55ffe0e9a7cef1633db30e705119d9
+      size: 248034
     - path: data/processed/train.csv
-      md5: 22866b5f3a0ac569fc9c077928d3f3b2
-      size: 28121239
+      md5: e12dfcdd06eab37aa99e146aa1b0b3f2
+      size: 28124770
     - path: src/models/lstm/data.py
       md5: 79adf097e34c837bcdb9fe67bca08ede
       size: 3194
     - path: src/models/lstm/model.py
-      md5: f71586b27b1c324def7788b768181a29
-      size: 4251
+      md5: 02cf20c1d19a504e5d4078f6dee86b58
+      size: 4303
     - path: src/models/lstm/train.py
-      md5: b1a46f324a88f43c3362fd0eb07dae3e
-      size: 955
+      md5: 032494f1e35b280b5254cd2071199c93
+      size: 972
     params:
       params.yaml:
         lstm:
           data:
             max_sequence_length: 100
-            batch_size_train: 4
-            batch_size_valid: 32
+            batch_size_train: 16
+            batch_size_valid: 64
           model:
             embedding_dim: 64
             hidden_dim: 64
-            num_layers: 1
+            num_layers: 2
             dropout: 0.0
           optimizer:
             learning_rate: 0.001
-            epochs: 1
+            epochs: 10
     outs:
     - path: artifacts/lstm.ckpt
-      md5: 074d501320542b22fdd09687f1a32880
-      size: 2643205
+      md5: ca4112f1d70bd3edf684c0c92d762d24
+      size: 3044816
     - path: logs
-      md5: 425cf56ecd879793b318192517113db4.dir
-      size: 424
+      md5: b8393502fddb10e7f310d02d53437c0f.dir
+      size: 2089
       nfiles: 5
