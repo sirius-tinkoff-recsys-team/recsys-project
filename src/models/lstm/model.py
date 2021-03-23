@@ -63,7 +63,6 @@ class LSTMModel(pl.LightningModule):
         for key, value in logs.items():
             logger.log_metric(key, value.item(), dvc=True)
 
-        logger.next_epoch()
         return
 
     def validation_step(self, batch, batch_idx):

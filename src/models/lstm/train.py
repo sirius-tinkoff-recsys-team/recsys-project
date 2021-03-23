@@ -6,7 +6,7 @@ from src.models.lstm.data import BrightkiteDataModule
 from src.models.lstm.model import LSTMModel
 from src.logger import init_logger
 from src.config import params
-from src.utils.lightning import DVCLiveCompatibleModelCheckpoint
+from src.utils.lightning import DVCLiveCompatibleModelCheckpoint, DVCLiveNextStepCallback
 
 def train():
     init_logger(tags=["debug"])
@@ -21,12 +21,15 @@ def train():
         save_top_k=-1,
     )
 
+    dvclive_next_step_callback = DVCLiveNextStepCallback()
+
     trainer = pl.Trainer(
         checkpoint_callback=checkpoint_callback,
         deterministic=True,
         logger=False,
         max_epochs=params.lstm.optimizer.epochs,
         gpus=-1,
+        callbacks=[dvclive_next_step_callback]
     )
 
     trainer.fit(model, dm)
