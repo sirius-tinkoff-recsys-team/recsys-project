@@ -3,7 +3,8 @@ python-box
 rich
 pandarallel
 haversine
-torch
+-f https://download.pytorch.org/whl/torch_stable.html
+torch==1.8.0+cu111
 pytorch_lightning
 pandas
 numpy
