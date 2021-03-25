@@ -1,0 +1,16 @@
+FROM node:8-alpine AS build
+RUN npm config set unsafe-perm true
+RUN npm install -g npm
+
+RUN mkdir /code
+WORKDIR /code
+COPY ./frontend .
+RUN rm -rf node_modules/
+RUN npm install
+RUN npm run build
+
+FROM nginx:latest
+RUN mkdir /data
+COPY --from=build /code/dist /data
+RUN rm /etc/nginx/conf.d/*
+COPY ./nginx/server.conf /etc/nginx/conf.d/server.conf
