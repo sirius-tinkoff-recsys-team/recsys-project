@@ -98,11 +98,11 @@ stages:
       md5: 79adf097e34c837bcdb9fe67bca08ede
       size: 3194
     - path: src/models/lstm/model.py
-      md5: 02cf20c1d19a504e5d4078f6dee86b58
-      size: 4303
+      md5: dee5d5a33312ec66d3bb5932fcdaa8d3
+      size: 4275
     - path: src/models/lstm/train.py
-      md5: 032494f1e35b280b5254cd2071199c93
-      size: 972
+      md5: d66455d622d4c57e16940e8adad9037d
+      size: 1152
     params:
       params.yaml:
         lstm:
@@ -113,18 +113,18 @@ stages:
           model:
             embedding_dim: 64
             hidden_dim: 64
-            num_layers: 2
+            num_layers: 3
             dropout: 0.0
           optimizer:
             learning_rate: 0.001
-            epochs: 10
+            epochs: 200
     outs:
     - path: artifacts/lstm.ckpt
-      md5: ca4112f1d70bd3edf684c0c92d762d24
-      size: 3044816
+      md5: dd64c1ab211676aad39c9f6762e21a6d
+      size: 3447157
     - path: logs
-      md5: b8393502fddb10e7f310d02d53437c0f.dir
-      size: 2089
+      md5: a2bdf0818135d6a3da047ba6528d5a9b.dir
+      size: 38549
       nfiles: 5
   split_data_by_time:
     cmd: python3 src/features/split_data_by_time.py
